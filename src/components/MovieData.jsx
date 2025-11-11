@@ -1,61 +1,54 @@
-// src/components/MovieData.js
-const initialMovies = [
+  const initialMovies = [
   {
     id: 1,
-    title: 'Inception',
+    title: "Her",
+    rating: 4,
     description:
-      'A thief who steals corporate secrets through the use of dream-sharing technology.',
+      "In a near future, a lonely writer develops an unlikely relationship with an operating system designed to meet his every need.",
     posterURL:
-      'https://tse2.mm.bing.net/th/id/OIP.vnJImFIy1GEoBBAjyZ-tfQHaK-?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3',
-    rating: 5,
+      "https://m.media-amazon.com/images/M/MV5BMjA1Nzk0OTM2OF5BMl5BanBnXkFtZTgwNjU2NjEwMDE@._V1_.jpg",
+    trailerURL: "https://www.youtube.com/embed/6QRvTv_tpw0",
   },
   {
     id: 2,
-    title: 'The Dark Knight',
+    title: "The Lobster",
+    rating: 3,
     description:
-      'Batman faces the Joker, a criminal mastermind bent on chaos in Gotham City.',
+      "In a dystopian near future, single people, according to the laws of The City, are taken to The Hotel, where they are obliged to find a romantic partner in forty-five days or are transformed into beasts and sent off into The Woods.",
     posterURL:
-      'https://tse2.mm.bing.net/th/id/OIP.rvxkm3ZswfeGymXwjT686wAAAA?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3',
-    rating: 5,
+      "https://i.pinimg.com/originals/43/9b/19/439b192bedc27cfaa0ec1cc787db800d.jpg",
+    trailerURL: "https://www.youtube.com/embed/vU29VfayDMw",
   },
   {
     id: 3,
-    title: 'Interstellar',
+    title: "The Pianist",
+    rating: 5,
     description:
-      'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',
+      "A Polish Jewish musician struggles to survive the destruction of the Warsaw ghetto of World War II.",
     posterURL:
-      'https://tse4.mm.bing.net/th/id/OIP.n-lW5hhF0w9CCmLzfl6aRAHaK-?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3',
-    rating: 4,
+      "https://m.media-amazon.com/images/M/MV5BOWRiZDIxZjktMTA1NC00MDQ2LWEzMjUtMTliZmY3NjQ3ODJiXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+    trailerURL: "https://www.youtube.com/embed/BFwGqLa_oAo",
   },
   {
     id: 4,
-    title: 'Breaking Bad',
+    title: "Avengers: Endgame",
+    rating: 1,
     description:
-      'A high school chemistry teacher turned methamphetamine producer navigates the criminal underworld.',
+      "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
     posterURL:
-      'https://th.bing.com/th/id/R.fa6199280ffbbd0352af90d3ca549ce6?rik=VAW2HGGHsHhJLw&riu=http%3a%2f%2ffr.web.img5.acsta.net%2fpictures%2f19%2f06%2f18%2f12%2f11%2f3956503.jpg&ehk=Q3YzE8DgsXOotmqIF00vZilbvzFmImuvCqGNJ2Ra9C4%3d&risl=&pid=ImgRaw&r=0',
-    rating: 5,
-  },
-  {
-    id: 5,
-    title: "Gangs of New York",
-    rating: 3,
-    description:
-      "In 1862, Amsterdam Vallon returns to the Five Points area of New York City seeking revenge against Bill the Butcher, his father's killer.",
-    posterUrl:
-      "https://img7.cdn.cinoche.com/images/14aa038469eaf2ca96dbc3da4182428c.jpg",
-    // trailer: "https://www.youtube.com/embed/qHVUPri5tjA",
+      "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_.jpg",
+    trailerURL: "https://www.youtube.com/embed/TcMBFSGVi1c",
   },
 
-   {
+  {
     id: 6,
     title: "Inheritance",
     rating: 3,
     description:
       "A patriarch of a wealthy and powerful family suddenly passes away, leaving his daughter with a shocking secret inheritance that threatens to unravel and destroy the family.",
-    posterUrl:
+    posterURL:
       "https://i1.wp.com/setthetape.com/wp-content/uploads/2020/06/Inheritance-POSTER.jpg?resize=225%2C300&ssl=1",
-    // trailer: "https://www.youtube.com/embed/bkaWQ5HlE5U",
+    trailerURL: "https://www.youtube.com/embed/bkaWQ5HlE5U",
   },
   {
     id: 7,
@@ -63,9 +56,9 @@ const initialMovies = [
     rating: 4,
     description:
       "As a modern-day scientist, Tommy is struggling with mortality, desperatingly searching for the medical breakthrough that will save the life of his cancer-stricken wife, Izzi.",
-    posterUrl:
+    posterURL:
       "https://upload.wikimedia.org/wikipedia/en/e/ee/Fountain_poster_1.jpg",
-    // trailer: "https://www.youtube.com/embed/m8IlyFCbNZg",
+    trailerURL: "https://www.youtube.com/embed/m8IlyFCbNZg",
   },
   {
     id: 8,
@@ -73,9 +66,9 @@ const initialMovies = [
     rating: 4,
     description:
       "The true story of how the Boston Globe uncovered the massive scandal of child molestation and cover-up within the local Catholic Archdiocese, shaking the entire Catholic Church to its core.",
-    posterUrl:
+    posterURL:
       "https://m.media-amazon.com/images/M/MV5BMjIyOTM5OTIzNV5BMl5BanBnXkFtZTgwMDkzODE2NjE@._V1_.jpg",
-    // trailer: "https://www.youtube.com/embed/EwdCIpbTN5g",
+    trailerURL: "https://www.youtube.com/embed/EwdCIpbTN5g",
   },
   {
     id: 9,
@@ -83,11 +76,39 @@ const initialMovies = [
     rating: 1,
     description:
       "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
-    posterUrl:
+    posterURL:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6fUAbH2UnGWTjMEKt3iUe5YAPt3sJEpQcBw&s",
-    // trailer: "https://www.youtube.com/embed/6ZfuNTqbHE8",
+    trailerURL: "https://www.youtube.com/embed/6ZfuNTqbHE8",
   },
-
+  {
+    id: 10,
+    title: "The Machinist",
+    rating: 4,
+    description:
+      "An industrial worker who hasn't slept in a year begins to doubt his own sanity.",
+    posterURL:
+      "https://upload.wikimedia.org/wikipedia/en/b/b9/The_Machinist_poster.JPG",
+    trailerURL: "https://www.youtube.com/embed/gxH8U_49QnU",
+  },
+  {
+    id: 11,
+    title: "Skyfall",
+    rating: 1,
+    description:
+      "James Bond's loyalty to M is tested when her past comes back to haunt her. When MI6 comes under attack, 007 must track down and destroy the threat, no matter how personal the cost.",
+    posterURL:
+      "https://m.media-amazon.com/images/M/MV5BMWZiNjE2OWItMTkwNy00ZWQzLWI0NTgtMWE0NjNiYTljN2Q1XkEyXkFqcGdeQXVyNzAwMjYxMzA@._V1_.jpg",
+    trailerURL: "https://www.youtube.com/embed/6kw1UVovByw",
+  },
+  {
+    id: 12,
+    title: "Parasite",
+    rating: 3,
+    description:
+      "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+    posterURL:
+      "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_UY1200_CR90,0,630,1200_AL_.jpg",
+    trailerURL: "https://www.youtube.com/embed/SEUXfv87Wpk",
+  },
 ];
-
 export default initialMovies;

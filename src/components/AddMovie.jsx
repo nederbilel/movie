@@ -5,6 +5,7 @@ const emptyForm = {
   title: '',
   description: '',
   posterURL: '',
+  trailerURL: '',
   rating: 0,
 }
 
@@ -30,6 +31,7 @@ export default function AddMovie({ onAdd, onSuccess }) {
       title: form.title.trim(),
       description: form.description.trim(),
       posterURL: form.posterURL.trim(),
+      trailerURL: form.trailerURL.trim() || undefined,
       rating: Number(form.rating),
     })
     setForm(emptyForm)
@@ -53,6 +55,11 @@ export default function AddMovie({ onAdd, onSuccess }) {
         placeholder="Poster URL"
         value={form.posterURL}
         onChange={(e) => update('posterURL', e.target.value)}
+      />
+      <input
+        placeholder="Trailer URL (YouTube embed, optional)"
+        value={form.trailerURL}
+        onChange={(e) => update('trailerURL', e.target.value)}
       />
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <span style={{ opacity: 0.8 }}>Rating:</span>
