@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import StarRating from './StarRating'
 
 const emptyForm = {
   title: '',
@@ -7,7 +8,7 @@ const emptyForm = {
   rating: 0,
 }
 
-export default function AddMovie({ onAdd }) {
+export default function AddMovie({ onAdd, onSuccess }) {
   const [form, setForm] = useState(emptyForm)
   const [error, setError] = useState('')
 
@@ -33,6 +34,7 @@ export default function AddMovie({ onAdd }) {
     })
     setForm(emptyForm)
     setError('')
+    onSuccess && onSuccess()
   }
 
   return (
@@ -52,16 +54,21 @@ export default function AddMovie({ onAdd }) {
         value={form.posterURL}
         onChange={(e) => update('posterURL', e.target.value)}
       />
-      <input
-        type="number"
-        min={0}
-        max={5}
-        value={form.rating}
-        onChange={(e) => update('rating', e.target.value)}
-        placeholder="Rating"
-      />
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <span style={{ opacity: 0.8 }}>Rating:</span>
+        <StarRating value={form.rating} onChange={(n) => update('rating', n)} />
+        {form.rating > 0 && (
+          <button
+            type="button"
+            className="btn btn-sm btn-outline-secondary"
+            onClick={() => update('rating', 0)}
+          >
+            Reset
+          </button>
+        )}
+      </div>
       {error && <p className="error">{error}</p>}
-      <button type="submit">Add Movie</button>
+      <button type="submit" className="btn btn-primary">Add Movie</button>
     </form>
   )
 }

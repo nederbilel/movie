@@ -1,65 +1,36 @@
-import React, { useMemo, useState } from 'react'
-import MovieList from './components/MovieList'
-import Filter from './components/Filter'
-import AddMovie from './components/AddMovie'
-
-const initialMovies = [
-  {
-    id: 1,
-    title: 'Inception',
-    description:
-      'A thief who steals corporate secrets through the use of dream-sharing technology.',
-    posterURL:
-      'https://m.media-amazon.com/images/I/51y8sdl9wQL._AC_UF894,1000_QL80_.jpg',
-    rating: 5,
-  },
-  {
-    id: 2,
-    title: 'The Dark Knight',
-    description:
-      'Batman faces the Joker, a criminal mastermind bent on chaos in Gotham City.',
-    posterURL:
-      'https://m.media-amazon.com/images/I/71poxfO0P+L._AC_UF894,1000_QL80_.jpg',
-    rating: 5,
-  },
-  {
-    id: 3,
-    title: 'Interstellar',
-    description:
-      'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',
-    posterURL:
-      'https://m.media-amazon.com/images/I/81zq1nRZc-L._AC_UF894,1000_QL80_.jpg',
-    rating: 4,
-  },
-  {
-    id: 4,
-    title: 'Breaking Bad',
-    description:
-      'A high school chemistry teacher turned methamphetamine producer navigates the criminal underworld.',
-    posterURL:
-      'https://m.media-amazon.com/images/I/71Q1Iu4su6L._AC_UF894,1000_QL80_.jpg',
-    rating: 5,
-  },
-]
+import React, { useMemo, useState } from 'react';
+import initialMovies from './components/MovieData';
+import MovieList from './components/MovieList';
+import Filter from './components/Filter';
+import AddMovieModal from './components/AddMovieModal';
 
 export default function App() {
-  const [movies, setMovies] = useState(initialMovies)
-  const [titleFilter, setTitleFilter] = useState('')
-  const [minRating, setMinRating] = useState(0)
+  const [movies, setMovies] = useState(initialMovies);
+  const [titleFilter, setTitleFilter] = useState('');
+  const [minRating, setMinRating] = useState(0);
+  const [showAdd, setShowAdd] = useState(false);
 
   const filteredMovies = useMemo(() => {
-    const t = titleFilter.trim().toLowerCase()
-    return movies.filter((m) => {
-      const matchesTitle = t === '' || m.title.toLowerCase().includes(t)
-      const matchesRating = Number(m.rating) >= Number(minRating)
-      return matchesTitle && matchesRating
-    })
-  }, [movies, titleFilter, minRating])
+    const t = titleFilter.trim().toLowerCase();
+    return movies.filter(
+      (m) =>
+        (t === '' || m.title.toLowerCase().includes(t)) &&
+        Number(m.rating) >= Number(minRating)
+    );
+  }, [movies, titleFilter, minRating]);
+
+  const summary = useMemo(() => {
+    const count = filteredMovies.length;
+    const avg = count
+      ? (filteredMovies.reduce((s, m) => s + Number(m.rating || 0), 0) / count).toFixed(1)
+      : '0.0';
+    return { count, avg };
+  }, [filteredMovies]);
 
   const handleAddMovie = (movie) => {
-    const nextId = movies.length ? Math.max(...movies.map((m) => m.id)) + 1 : 1
-    setMovies((prev) => [...prev, { ...movie, id: nextId }])
-  }
+    const nextId = movies.length ? Math.max(...movies.map((m) => m.id)) + 1 : 1;
+    setMovies((prev) => [...prev, { ...movie, id: nextId }]);
+  };
 
   return (
     <div className="container">
@@ -70,12 +41,16 @@ export default function App() {
         minRating={minRating}
         onMinRatingChange={setMinRating}
       />
-
+      <div style={{ marginBottom: '0.75rem', opacity: 0.85 }}>
+        Showing {summary.count} result{summary.count === 1 ? '' : 's'} · Average rating {summary.avg}
+      </div>
       <MovieList movies={filteredMovies} />
-
       <hr />
-      <h2>Add a new movie</h2>
-      <AddMovie onAdd={handleAddMovie} />
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2 style={{ margin: 0 }}>Add a new movie</h2>
+        <button className="btn btn-success" onClick={() => setShowAdd(true)}>+ Add Movie</button>
+      </div>
+      <AddMovieModal show={showAdd} onClose={() => setShowAdd(false)} onAdd={handleAddMovie} />
     </div>
-  )
+  );
 }

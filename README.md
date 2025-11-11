@@ -4,8 +4,10 @@ A simple React (Vite) app to showcase favorite movies / TV shows. Supports filte
 
 ## Features
 - List of movies with title, description, poster URL, rating
-- Filter by title (case-insensitive substring) and minimum rating (0-5)
-- Add a new movie with validation
+- Filter by title (case-insensitive substring) and by clicking minimum star rating
+- Add a new movie via Bootstrap modal with validation
+- Star-based rating display and input (toggle click to set/reset)
+- Summary bar showing count and average rating of filtered results
 - Responsive grid layout & dark theme styling
 
 ## Tech Stack
@@ -37,8 +39,10 @@ src/
 ```
 
 ## Implementation Notes
-- `useState` manages movies, titleFilter, minRating, and form state.
-- `useMemo` optimizes filtered movies calculation.
+- `useState` manages movies, filters, modal visibility, and form state.
+- `useMemo` optimizes filtered movies calculation and summary stats.
+- Star rating component (`StarRating`) supports read-only and interactive modes.
+- Add movie flow uses a Bootstrap modal (`AddMovieModal`).
 - Basic validation ensures all fields required; rating constrained to 0-5.
 
 ## Next Ideas
